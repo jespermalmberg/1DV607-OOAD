@@ -70,13 +70,12 @@ public class DataBase {
 	/**
 	 * Adds a new member to the memberList with a unique new id.
 	 * 
-	 * @param name <code>String</code>
-	 * @param ssn <code>String</code>
+	 * @param m <code>Member</code>
 	 */
-	public void addMember(String name, String ssn) {
+	public void addMember(Member m) {
 
-		Member member = new Member(name, ssn, assignId(memberList));
-		memberList.add(member);
+		m.setId(assignId(memberList));
+		memberList.add(m);
 	}
 
 	/**

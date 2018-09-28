@@ -40,20 +40,12 @@
     <name>Dennis the menace</name>
     <ssn>199206010000</ssn>
   </member>
-  <member id="7">
-    <name>Carl Lindfeldt</name>
-    <ssn>198605210000</ssn>
-    <boat>
-      <type>Sail Boat</type>
-      <length>15m</length>
-    </boat>
-  </member>
-  <member id="6">
-    <name>Carl Lindfeldt</name>
-    <ssn>198605220000</ssn>
-  </member>
   <member id="8">
     <name>Dennis the Menace</name>
     <ssn>198303030000</ssn>
+  </member>
+  <member id="9">
+    <name>Hello World</name>
+    <ssn>19990909000</ssn>
   </member>
 </data_base>

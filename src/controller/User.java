@@ -25,7 +25,7 @@ public class User {
 
 			switch(selection) {
 			case 1:
-				ui.enterNewMember(in, db);
+				db.addMember(ui.enterNewMember(in));
 				ui.mainOptions();
 				break;
 			case 2:

@@ -39,10 +39,9 @@ public class Member {
 	 * @param ssn<code>String</code>
 	 * @param id <code>int</code>
 	 */
-	public Member(String name, String ssn, int id) {
+	public Member(String name, String ssn) {
 		this.name = name;
 		this.ssn = ssn;
-		this. id = id;
 		this.boats = new ArrayList<Boat>();
 	}
 

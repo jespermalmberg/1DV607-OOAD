@@ -7,7 +7,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import model.Boat;
-import model.DataBase;
 import model.Member;
 
 /**
@@ -62,18 +61,19 @@ public class UserInterface {
 	 * @param scan <code>Scanner</code>
 	 * @param db <code>DataBase</code>
 	 */
-	public void enterNewMember(Scanner scan, DataBase db) {
+	public Member enterNewMember(Scanner scan) {
 		// Clear Scanner
 		scan.nextLine();
-		String str = "Hello!";
 		System.out.print("Enter member name: ");
 		String name = scan.nextLine();
 		System.out.print("Enter member social security number(YYMMDDNNNN): ");
 		String ssn = scan.nextLine();
 
-		db.addMember(name, ssn);
+		Member member = new Member(name, ssn);
 
 		System.out.println("New Member added to database!");
+		
+		return member;
 	}
 
 	/**
