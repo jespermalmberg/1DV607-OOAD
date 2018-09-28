@@ -65,7 +65,7 @@ public class UserInterface {
 	public void enterNewMember(Scanner scan, DataBase db) {
 		// Clear Scanner
 		scan.nextLine();
-
+		String str = "Hello!";
 		System.out.print("Enter member name: ");
 		String name = scan.nextLine();
 		System.out.print("Enter member social security number(YYMMDDNNNN): ");
