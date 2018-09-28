@@ -60,7 +60,7 @@ public class UserInterface {
 	 * 
 	 * @param scan <code>Scanner</code>
 	 * @param db <code>DataBase</code>
-	 */
+	 */f
 	public Member enterNewMember(Scanner scan) {
 		// Clear Scanner
 		scan.nextLine();
