@@ -60,7 +60,7 @@ public class UserInterface {
 	 * 
 	 * @param scan <code>Scanner</code>
 	 * @param db <code>DataBase</code>
-	 */f
+	 */
 	public Member enterNewMember(Scanner scan) {
 		// Clear Scanner
 		scan.nextLine();
@@ -85,7 +85,7 @@ public class UserInterface {
 		System.out.println("Member information");
 		System.out.println();
 		if (list.size() != 0) {
-			for (Member m : list) {		
+			for (Member m : list) {
 				System.out.println("ID:    " + m.getId());
 				System.out.println("Name:  " + m.getName());
 				if (m.getBoats() != null) {

@@ -48,4 +48,8 @@
     <name>Hello World</name>
     <ssn>19990909000</ssn>
   </member>
+  <member id="6">
+    <name>Richard Coeur de Leon</name>
+    <ssn>120001010000</ssn>
+  </member>
 </data_base>
