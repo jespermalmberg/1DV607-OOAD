@@ -156,6 +156,7 @@ public class DataBase {
 
 	/**
 	 * Checks all the current id's of the memberList array and returns the next available one.
+	 * Ensures previously deleted Id's are recycled.
 	 * 
 	 * @return <code>int</code>
 	 */
