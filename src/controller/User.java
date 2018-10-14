@@ -1,31 +1,36 @@
 package controller;
 
-import java.util.Scanner;
-
+/**
+ * 
+ * @author Jesper Malmberg
+ * @since 2018-10-14
+ *
+ * A class representing the controller.
+ * 
+ */
 public class User {
 
-	private Scanner in;
-	
+	/**
+	 * Creates a new instance of User, the controller.
+	 * 
+	 * @param db <code>DataBase</code>
+	 * @param ui <code>UserInterface</code>
+	 */
 	public User(model.DataBase db, view.UserInterface ui) {
-		in = new Scanner(System.in);
-		
-		Boolean start = true;
-		while(start){
-			ui.welcomeMsg();
-			start = false;
-		}
-		
+
+		ui.welcomeMsg();
+
 		boolean exit = false;
 
 		ui.mainOptions();
+
 		do {
 
-			System.out.print("Enter selection: ");
-			int selection = ui.getInput(in);
+			int selection = ui.getInput();
 
 			switch(selection) {
 			case 1:
-				db.addMember(ui.enterNewMember(in));
+				db.addMember(ui.enterNewMember());
 				ui.mainOptions();
 				break;
 			case 2:
@@ -38,40 +43,41 @@ public class User {
 				break;
 			case 4:
 				ui.compactList(db.getMemberList());
-				ui.viewMemberInfo(in, db.getMemberList());
+				ui.viewMemberInfo(db.getMemberList());
 				ui.mainOptions();
 				break;
 			case 5:
 				ui.compactList(db.getMemberList());
-				ui.changeMember(in, db.getMemberList());
+				ui.changeMember(db.getMemberList());
 				ui.mainOptions();
 				break;
 			case 6:
 				ui.compactList(db.getMemberList());
-				ui.removeMember(in, db.getMemberList());
+				ui.removeMember(db.getMemberList());
 				ui.mainOptions();
 				break;
 			case 7:
 				ui.compactList(db.getMemberList());
-				ui.registerBoat(in, db.getMemberList());
+				ui.registerBoat(db.getMemberList());
 				ui.mainOptions();
 				break;
 			case 8:
 				ui.compactList(db.getMemberList());
-				ui.deleteBoat(in, db.getMemberList());
+				ui.deleteBoat(db.getMemberList());
 				ui.mainOptions();
 				break;
 			case 9:
 				ui.compactList(db.getMemberList());
-				ui.updateBoat(in, db.getMemberList());
+				ui.updateBoat(db.getMemberList());
 				ui.mainOptions();
 				break;
 			case 11:
 				db.writeXML(db.getMemberList(), db.getSrc());
+				ui.closeScan();				
 				exit = true;
-				in.close();
 				break;
 			}	
+
 		} while(!exit);
 	}
 }

@@ -37,7 +37,6 @@ public class DataBase {
 	public DataBase(String src) {
 		this.src = src;
 		createMemberList(this.src);
-		
 	}
 
 	/**
@@ -97,10 +96,8 @@ public class DataBase {
 				}				
 			}
 
-			//new XMLOutputter().output(doc, System.out);
 			XMLOutputter xmlOutput = new XMLOutputter();
 
-			// display nice nice
 			xmlOutput.setFormat(Format.getPrettyFormat());
 			xmlOutput.output(doc, new FileWriter(src));
 
@@ -124,7 +121,6 @@ public class DataBase {
 			SAXBuilder builder = new SAXBuilder();
 
 			File xmlFile = new File(src);
-			//System.out.println(getClass().getClassLoader().getResource(src).getFile());
 			doc = (Document)builder.build(xmlFile);
 			rootNode = doc.getRootElement();
 

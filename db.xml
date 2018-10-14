@@ -4,8 +4,12 @@
     <name>Ernest Hemmingway</name>
     <ssn>189907210000</ssn>
     <boat>
-      <type>Sailboat</type>
+      <type>Kayak</type>
       <length>3m</length>
+    </boat>
+    <boat>
+      <type>Catamaran</type>
+      <length>9m</length>
     </boat>
   </member>
   <member id="5">
@@ -15,9 +19,5 @@
       <type>Speedboat</type>
       <length>5m</length>
     </boat>
-  </member>
-  <member id="4">
-    <name>Dennis the menace</name>
-    <ssn>199206010000</ssn>
   </member>
 </data_base>

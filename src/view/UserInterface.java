@@ -3,7 +3,6 @@ package view;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
-
 import java.util.Scanner;
 
 import model.Boat;
@@ -18,12 +17,14 @@ import model.Member;
  */
 public class UserInterface {
 
+	private Scanner scan;
 
 	/**
 	 * Creates a new instance of UserInferface.
 	 * 
 	 */
 	public UserInterface() {
+		scan = new Scanner(System.in);
 	}
 
 	/**
@@ -32,7 +33,7 @@ public class UserInterface {
 	public void welcomeMsg() {
 		System.out.println("<------------------------------------->");
 		System.out.println("<                                     >");
-		System.out.println("<      Welcome to the Jolly Pirate!   >");
+		System.out.println("<    Welcome to the Jolly Pirate!     >");
 		System.out.println("<                                     >");	
 	}
 
@@ -53,16 +54,15 @@ public class UserInterface {
 		System.out.println("<   [9] Edit Boat                     >");
 		System.out.println("<   [11] Exit                         >");
 		System.out.println("<------------------------------------->");
+		System.out.print("Enter selection: ");
 	}
 
 	/**
 	 * Enters a new member into the temporary database.
 	 * 
-	 * @param scan <code>Scanner</code>
-	 * @param db <code>DataBase</code>
 	 */
-	public Member enterNewMember(Scanner scan) {
-		// Clear Scanner
+	public Member enterNewMember() {
+		//"Clear the scanner"
 		scan.nextLine();
 		System.out.print("Enter member name: ");
 		String name = scan.nextLine();
@@ -72,7 +72,7 @@ public class UserInterface {
 		Member member = new Member(name, ssn);
 
 		System.out.println("New Member added to database!");
-		
+
 		return member;
 	}
 
@@ -95,7 +95,7 @@ public class UserInterface {
 			}	
 		}
 	}
-	
+
 	/**
 	 * Displays a verbose list over all the members in the console.
 	 * 
@@ -127,14 +127,13 @@ public class UserInterface {
 	/**
 	 * View an individual members information.
 	 * 
-	 * @param scan <code>Scanner</code>
 	 * @param list <code>ArrayList</code> of all the Member objects.
 	 */
-	public void viewMemberInfo(Scanner scan, ArrayList<Member> list) {
+	public void viewMemberInfo(ArrayList<Member> list) {
 
 		System.out.print("Enter the ID of the member to view: ");
 
-		int selection = getInput(scan);
+		int selection = getInput();
 
 		ArrayList<Member> singleMember = new ArrayList<Member>();
 
@@ -148,14 +147,13 @@ public class UserInterface {
 	/**
 	 * Remove an individual member from the temporary database.
 	 * 
-	 * @param scan <code>Scanner</code>
 	 * @param list <code>ArrayList</code> of all the Member objects.
 	 */
-	public void removeMember(Scanner scan, ArrayList<Member> list) {
+	public void removeMember(ArrayList<Member> list) {
 
 		System.out.print("Enter the ID of the member to remove: ");
 
-		int selection = getInput(scan);
+		int selection = getInput();
 
 		Member toRemove = null;
 
@@ -173,18 +171,18 @@ public class UserInterface {
 	/**
 	 * Update member info.
 	 * 
-	 * @param scan <code>Scanner</code>
 	 * @param list <code>ArrayList</code> of all the Member objects.
 	 */
-	public void changeMember(Scanner scan, ArrayList<Member> list) {
+	public void changeMember(ArrayList<Member> list) {
 
 		System.out.print("Enter the ID of the member to update: ");
 
-		int selection = getInput(scan);	
+		int selection = getInput();	
 
 		if (list.size() != 0) {
 			for (Member m : list) {
 				if (m.getId() == selection) {
+					//"Clear the scanner"
 					scan.nextLine();
 					System.out.print("Enter new name: ");
 					m.setName(scan.nextLine());
@@ -199,18 +197,18 @@ public class UserInterface {
 	/**
 	 * Register a boat to the selected Member. Enter boat type, and length.
 	 * 
-	 * @param scan <code>Scanner</code>
 	 * @param list <code>ArrayList</code> of all the Member objects.
 	 */
-	public void registerBoat(Scanner scan, ArrayList<Member> list) {
+	public void registerBoat(ArrayList<Member> list) {
 
 		System.out.print("Enter the ID of the member to register boat: ");
 
-		int selection = getInput(scan);
+		int selection = getInput();
 
 		if (list.size() != 0) {
 			for (Member m : list) {
 				if (m.getId() == selection) {
+					//"Clear the scanner"
 					scan.nextLine();
 					System.out.print("Enter boat type: ");
 					String type = scan.nextLine();
@@ -227,18 +225,18 @@ public class UserInterface {
 	/**
 	 * Remove a boat entry from the selected Member.
 	 * 
-	 * @param scan <code>Scanner</code>
 	 * @param list <code>ArrayList</code> of all the Member objects.
 	 */
-	public void deleteBoat(Scanner scan, ArrayList<Member> list) {
+	public void deleteBoat(ArrayList<Member> list) {
 		int toDelete;
 
 		System.out.print("Enter the ID of the member to remove boat registration: ");
 
-		int selection = getInput(scan);
+		int selection = getInput();
 
 		for (Member m : list) {
 			if (m.getId() == selection) {
+				//"Clear the scanner"
 				scan.nextLine();
 				int counter = 1;
 				ArrayList<Boat> bList = m.getBoats();
@@ -252,7 +250,7 @@ public class UserInterface {
 				if (bList.size() > 0) {
 					System.out.println("Which boat would you like to remove?");
 					do {
-						toDelete = getInput(scan);
+						toDelete = getInput();
 						if (toDelete > 0 && toDelete <= bList.size()) {
 							m.deleteBoat(toDelete - 1);
 							System.out.println("Boat was succesfully removed!");
@@ -264,7 +262,7 @@ public class UserInterface {
 
 				} else {
 					System.out.println("This member has no boats, choose another one...");
-					deleteBoat(scan, list);
+					deleteBoat(list);
 				}
 			}
 		}	
@@ -273,19 +271,19 @@ public class UserInterface {
 	/**
 	 * Update the selected Boat from the selected Member.
 	 * 
-	 * @param scan <code>Scanner</code>
 	 * @param list <code>ArrayList</code> of all the Member objects.
 	 */
-	public void updateBoat(Scanner scan, ArrayList<Member> list) {
+	public void updateBoat(ArrayList<Member> list) {
 
 		int toUpdate = -1;
 
 		System.out.print("Enter the ID of the member to update boat registration: ");
 
-		int selection = getInput(scan);	
+		int selection = getInput();	
 
 		for (Member m : list) {
 			if (m.getId() == selection) {
+				//"Clear the scanner"
 				scan.nextLine();
 				int counter = 1;
 				ArrayList<Boat> bList = m.getBoats();
@@ -299,8 +297,9 @@ public class UserInterface {
 				if (bList.size() > 0) {
 					System.out.println("Which boat would you like to update?");
 					do {
-						toUpdate = getInput(scan);
+						toUpdate = getInput();
 						if (toUpdate > 0 && toUpdate <= bList.size()) {
+							//"Clear the scanner"
 							scan.nextLine();
 							System.out.print("Enter boat type: ");
 							String type = scan.nextLine();
@@ -316,7 +315,7 @@ public class UserInterface {
 
 				} else {
 					System.out.println("This member has no boats, choose another one...");
-					updateBoat(scan, list);
+					updateBoat(list);
 				}
 			}
 		}
@@ -325,10 +324,9 @@ public class UserInterface {
 	/**
 	 * Method that returns the integer input from the scanner. If other than integer is entered it will catch the error and try again.
 	 * 
-	 * @param scan <code>Scanner</code>
 	 * @return <code>int</code>
 	 */
-	public int getInput(Scanner scan) {
+	public int getInput() {
 
 		int selection = -1;
 		try {
@@ -338,8 +336,16 @@ public class UserInterface {
 			System.out.println("Invalid selection, please try again...");
 			//"Clear the scanner"
 			scan.nextLine();
-			selection = getInput(scan);
+			selection = getInput();
 		}
 		return selection;
+	}
+
+	/**
+	 * Closes the scanner when called when exiting program
+	 * 
+	 */
+	public void closeScan() {
+		scan.close();
 	}
 }
