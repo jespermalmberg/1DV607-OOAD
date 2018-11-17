@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import view.Event;
 import model.Boat;
 import model.Member;
 
@@ -321,6 +322,40 @@ public class UserInterface {
 		}
 	}
 
+	/**
+	 * Method that returns the integer input from the scanner. If other than integer is entered it will catch the error and try again.
+	 * 
+	 * @return <code>int</code>
+	 */
+	public Event getSelection() {
+
+		int selection = getInput();
+			switch(selection) {
+			case 1:
+				return Event.NEW_MEMBER;
+			case 2 :
+				return Event.COMPACT_LIST;
+			case 3 :
+				return Event.VERBOSE_LIST;
+			case 4 :
+				return Event.MEMBER_INFO;
+			case 5:
+				return Event.CHANGE_MEMBER;
+			case 6 :
+				return Event.DELETE_MEMBER;
+			case 7 :
+				return Event.REGISTER_BOAT;
+			case 8 :
+				return Event.DELETE_BOAT;
+			case 9 :
+				return Event.EDIT_BOAT;
+			case 11 :
+				return Event.EXIT;
+			}
+			return Event.NULL;
+		} 
+		
+	
 	/**
 	 * Method that returns the integer input from the scanner. If other than integer is entered it will catch the error and try again.
 	 * 

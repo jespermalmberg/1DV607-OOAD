@@ -26,55 +26,57 @@ public class User {
 
 		do {
 
-			int selection = ui.getInput();
+			view.Event selection = ui.getSelection();
 
 			switch(selection) {
-			case 1:
+			case NEW_MEMBER:
 				db.addMember(ui.enterNewMember());
 				ui.mainOptions();
 				break;
-			case 2:
+			case COMPACT_LIST:
 				ui.compactList(db.getMemberList());
 				ui.mainOptions();
 				break;
-			case 3:
+			case VERBOSE_LIST:
 				ui.verboseList(db.getMemberList());
 				ui.mainOptions();
 				break;
-			case 4:
+			case MEMBER_INFO:
 				ui.compactList(db.getMemberList());
 				ui.viewMemberInfo(db.getMemberList());
 				ui.mainOptions();
 				break;
-			case 5:
+			case CHANGE_MEMBER:
 				ui.compactList(db.getMemberList());
 				ui.changeMember(db.getMemberList());
 				ui.mainOptions();
 				break;
-			case 6:
+			case DELETE_MEMBER:
 				ui.compactList(db.getMemberList());
 				ui.removeMember(db.getMemberList());
 				ui.mainOptions();
 				break;
-			case 7:
+			case REGISTER_BOAT:
 				ui.compactList(db.getMemberList());
 				ui.registerBoat(db.getMemberList());
 				ui.mainOptions();
 				break;
-			case 8:
+			case DELETE_BOAT:
 				ui.compactList(db.getMemberList());
 				ui.deleteBoat(db.getMemberList());
 				ui.mainOptions();
 				break;
-			case 9:
+			case EDIT_BOAT:
 				ui.compactList(db.getMemberList());
 				ui.updateBoat(db.getMemberList());
 				ui.mainOptions();
 				break;
-			case 11:
+			case EXIT:
 				db.writeXML(db.getMemberList(), db.getSrc());
 				ui.closeScan();				
 				exit = true;
+				break;
+			case NULL:
 				break;
 			}	
 
