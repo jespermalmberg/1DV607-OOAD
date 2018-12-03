@@ -16,8 +16,8 @@
     <name>Franklin D Rosevelt</name>
     <ssn>188201300000</ssn>
     <boat>
-      <type>Speedboat</type>
-      <length>5m</length>
+      <type>Speed Boat</type>
+      <length>9m</length>
     </boat>
   </member>
 </data_base>
